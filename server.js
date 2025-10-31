@@ -98,6 +98,13 @@ app.use((req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
+const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
+
+app.listen(port, host, () => {
+  const url = process.env.NODE_ENV === 'production' 
+    ? `Server running on port ${port}` 
+    : `Server running on http://localhost:${port}`;
+  console.log(url);
+});
 
 
