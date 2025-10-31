@@ -1,9 +1,22 @@
 (function(){
   const API_HOST = 'https://cdn.contentstack.io';
-  const API_KEY = 'blt979982b3ad227a1d';
-  const DELIVERY_TOKEN = 'cs4a3fe30dbd2e57d4efb25c6a';
-  const ENVIRONMENT = 'development';
-  const LOCALE = 'en-us';
+  
+  // Get environment variables (works in both localhost and Contentstack Launch)
+  const getEnvVar = (name, fallback) => {
+    // Try window.env first (Contentstack Launch), then process.env (Node.js), then fallback
+    if (typeof window !== 'undefined' && window.env && window.env[name]) {
+      return window.env[name];
+    }
+    if (typeof process !== 'undefined' && process.env && process.env[name]) {
+      return process.env[name];
+    }
+    return fallback;
+  };
+  
+  const API_KEY = getEnvVar('CONTENTSTACK_API_KEY', 'blt979982b3ad227a1d');
+  const DELIVERY_TOKEN = getEnvVar('CONTENTSTACK_DELIVERY_TOKEN', 'cs4a3fe30dbd2e57d4efb25c6a');
+  const ENVIRONMENT = getEnvVar('CONTENTSTACK_ENVIRONMENT', 'development');
+  const LOCALE = getEnvVar('CONTENTSTACK_LOCALE', 'en-us');
 
   async function fetchJSON(url){
     const sep = url.includes('?') ? '&' : '?';

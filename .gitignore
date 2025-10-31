@@ -7,11 +7,14 @@ apps/react/dist/
 .next/
 dist/
 
-# Environment variables
+# Environment variables (keep .env.example)
 .env
 .env.local
 .env.production
 .env.development
+
+# But allow .env.example for reference
+!.env.example
 
 # Runtime
 .DS_Store
