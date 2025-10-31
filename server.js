@@ -83,12 +83,24 @@ app.get('/updates.html', (req, res) => res.redirect(301, '/updates'));
 app.get('/events.html', (req, res) => res.redirect(301, '/events'));
 app.get('/start.html', (req, res) => res.redirect(301, '/start'));
 
+// Serve assets explicitly (PRIORITY)
+app.use('/assets', express.static(path.join(publicDir, 'assets'), {
+  etag: true,
+  lastModified: true,
+  maxAge: '1y', // Cache assets for 1 year
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.css') || filePath.endsWith('.js')) {
+      res.setHeader('Content-Type', filePath.endsWith('.css') ? 'text/css' : 'application/javascript');
+    }
+  }
+}));
+
 // Serve SPA assets first if built
 if (hasSPA) {
   app.use(express.static(spaDir, staticOptions));
 }
 
-// Serve ./public as static directory (AFTER routes)
+// Serve ./public as static directory (AFTER routes but AFTER assets)
 app.use(express.static(publicDir, staticOptions));
 
 // Fallback: React SPA index if present, else public index.html
