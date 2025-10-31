@@ -3,13 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
-  },
   "scripts": {
     "dev": "node server.js",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "organize": "node scripts/organize-project.js",
     "build": "npm run organize && node scripts/build-static.js",
     "import:all": "node scripts/import-all.js",

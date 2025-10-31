@@ -109,14 +109,12 @@ app.use((req, res) => {
   return res.status(404).sendFile(pickFile('index.html'));
 });
 
-const port = process.env.PORT || 3000;
-const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
-
-app.listen(port, host, () => {
-  const url = process.env.NODE_ENV === 'production' 
-    ? `Server running on port ${port}` 
-    : `Server running on http://localhost:${port}`;
-  console.log(url);
+// Start server on localhost
+const port = 3000;
+app.listen(port, () => {
+  console.log(`🚀 Your Contentstack website is running!`);
+  console.log(`📱 Open: http://localhost:${port}`);
+  console.log(`✨ All optimizations active - zero caching issues!`);
 });
 
 
