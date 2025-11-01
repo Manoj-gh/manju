@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useContentstack } from '../hooks/useContentstack'
 
 export default function HomePage() {
@@ -51,29 +52,29 @@ export default function HomePage() {
       <header className="header">
         <div className="container">
           <nav className="navbar" role="navigation" aria-label="main navigation">
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
               <img src="/assets/logo%20(2).png" alt="Contentstack" width="185" height="32" />
-            </a>
+            </Link>
             <ul className="nav-list">
-              <li><a href="/platform">Platform</a></li>
+              <li><Link to="/platform">Platform</Link></li>
               <li className="has-dropdown">
                 <button className="dropdown-trigger" aria-expanded="false">Resources</button>
                 <div className="dropdown" role="menu">
-                  <a href="/blog">Blog</a>
-                  <a href="/academy">Academy</a>
-                  <a href="/docs">Documentation</a>
-                  <a href="/marketplace">Marketplace</a>
-                  <a href="/updates">Product updates</a>
-                  <a href="/events">Events</a>
+                  <Link to="/blog">Blog</Link>
+                  <Link to="/academy">Academy</Link>
+                  <Link to="/docs">Documentation</Link>
+                  <Link to="/marketplace">Marketplace</Link>
+                  <Link to="/updates">Product updates</Link>
+                  <Link to="/events">Events</Link>
                 </div>
               </li>
-              <li><a href="/plans">Plans</a></li>
-              <li><a href="/partners">Partners</a></li>
-              <li><a href="/company">Company</a></li>
+              <li><Link to="/plans">Plans</Link></li>
+              <li><Link to="/partners">Partners</Link></li>
+              <li><Link to="/company">Company</Link></li>
             </ul>
             <div className="nav-cta">
-              <a className="btn ghost" href="/contact">Talk to Us</a>
-              <a className="btn solid" href="/start">Start Free</a>
+              <Link className="btn ghost" to="/contact">Talk to Us</Link>
+              <Link className="btn solid" to="/start">Start Free</Link>
             </div>
           </nav>
         </div>
@@ -84,9 +85,9 @@ export default function HomePage() {
         <div className="container hero-inner">
           <h1>{hero?.headline || "The adaptive experience platform for real‑time personalization at speed and scale"}</h1>
           <div className="hero-cta">
-            <a className="btn solid xl" href={hero?.primary_cta?.href || "/start"}>
+            <Link className="btn solid xl" to={hero?.primary_cta?.href || "/start"}>
               {hero?.primary_cta?.label || "Try for free"}
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -127,9 +128,9 @@ export default function HomePage() {
                 ></div>
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>
-                <a className="link" href={card.link?.href || "#"}>
+                <Link className="link" to={card.link?.href || "#"}>
                   {card.link?.label || "Learn more"}
-                </a>
+                </Link>
               </article>
             )) || (
               // Fallback static content if no Contentstack data
@@ -138,19 +139,19 @@ export default function HomePage() {
                   <div className="role-art role-1" aria-hidden="true"></div>
                   <h3>Business users</h3>
                   <p>Streamline workflows and collaborate with guardrails so teams ship faster.</p>
-                  <a className="link" href="#">Learn more</a>
+                  <Link className="link" to="#">Learn more</Link>
                 </article>
                 <article className="role-card">
                   <div className="role-art role-2" aria-hidden="true"></div>
                   <h3>Developers &amp; IT</h3>
                   <p>Build with your preferred tools and frameworks on an API‑first platform.</p>
-                  <a className="link" href="#">Learn more</a>
+                  <Link className="link" to="#">Learn more</Link>
                 </article>
                 <article className="role-card">
                   <div className="role-art role-3" aria-hidden="true"></div>
                   <h3>Digital leaders</h3>
                   <p>Orchestrate omnichannel experiences and scale with confidence.</p>
-                  <a className="link" href="#">Learn more</a>
+                  <Link className="link" to="#">Learn more</Link>
                 </article>
               </>
             )}
@@ -172,9 +173,9 @@ export default function HomePage() {
                 </div>
                 <h3>{card.label}</h3>
                 <p className="muted">{card.description}</p>
-                <a className="link" href={card.link?.href || "#"}>
+                <Link className="link" to={card.link?.href || "#"}>
                   {card.link?.label || "Read the story"}
-                </a>
+                </Link>
               </article>
             )) || (
               // Fallback content
@@ -186,7 +187,7 @@ export default function HomePage() {
                   </div>
                   <h3>Faster content publishing</h3>
                   <p className="muted">See how global brands accelerate launches.</p>
-                  <a className="link" href="#">Read the story</a>
+                  <Link className="link" to="#">Read the story</Link>
                 </article>
                 <article className="success-card">
                   <div className="metric">
@@ -195,7 +196,7 @@ export default function HomePage() {
                   </div>
                   <h3>Conversion rate</h3>
                   <p className="muted">Personalization that impacts revenue.</p>
-                  <a className="link" href="#">Read the story</a>
+                  <Link className="link" to="#">Read the story</Link>
                 </article>
                 <article className="success-card">
                   <div className="metric">
@@ -204,7 +205,7 @@ export default function HomePage() {
                   </div>
                   <h3>Fewer workflow steps</h3>
                   <p className="muted">Governance without slowing teams.</p>
-                  <a className="link" href="#">Read the story</a>
+                  <Link className="link" to="#">Read the story</Link>
                 </article>
               </>
             )}
@@ -316,29 +317,29 @@ export default function HomePage() {
           <h2>Get started</h2>
           <div className="action-grid reveal">
             {quickLinks?.links?.map((link, i) => (
-              <a key={i} className="action-card" href={link.href}>
+              <Link key={i} className="action-card" to={link.href}>
                 <h3>{link.label}</h3>
                 <p className="muted">Quick description for {link.label.toLowerCase()}.</p>
-              </a>
+              </Link>
             )) || (
               // Fallback links
               <>
-                <a className="action-card" href="/plans">
+                <Link className="action-card" to="/plans">
                   <h3>Compare plans</h3>
                   <p className="muted">Find the right solution for your team.</p>
-                </a>
-                <a className="action-card" href="/docs">
+                </Link>
+                <Link className="action-card" to="/docs">
                   <h3>Read the docs</h3>
                   <p className="muted">Build fast with guides and APIs.</p>
-                </a>
-                <a className="action-card" href="/marketplace">
+                </Link>
+                <Link className="action-card" to="/marketplace">
                   <h3>Explore apps</h3>
                   <p className="muted">Integrations for search, media, commerce and more.</p>
-                </a>
-                <a className="action-card" href="/contact">
+                </Link>
+                <Link className="action-card" to="/contact">
                   <h3>Talk to us</h3>
                   <p className="muted">Tell us about your goals. We'll help you get there.</p>
-                </a>
+                </Link>
               </>
             )}
           </div>
@@ -354,13 +355,13 @@ export default function HomePage() {
           </p>
           <div className="cta-row">
             {bottomCta?.ctas?.map((cta, i) => (
-              <a key={i} className={`btn ${i === 0 ? 'solid' : 'ghost'} xl`} href={cta.href}>
+              <Link key={i} className={`btn ${i === 0 ? 'solid' : 'ghost'} xl`} to={cta.href}>
                 {cta.label}
-              </a>
+              </Link>
             )) || (
               <>
-                <a className="btn solid xl" href="/contact">Request a demo</a>
-                <a className="btn ghost xl" href="/start">Start free</a>
+                <Link className="btn solid xl" to="/contact">Request a demo</Link>
+                <Link className="btn ghost xl" to="/start">Start free</Link>
               </>
             )}
           </div>
@@ -375,18 +376,18 @@ export default function HomePage() {
               <h4>Solutions</h4>
               <ul>
                 <li><a href="#">Solution Center</a></li>
-                <li><a href="/marketplace">Marketplace</a></li>
+                <li><Link to="/marketplace">Marketplace</Link></li>
                 <li><a href="#">Changelog</a></li>
                 <li><a href="#">Developers &amp; IT</a></li>
                 <li><a href="#">Business users</a></li>
-                <li><a href="/plans">Plans &amp; Pricing</a></li>
+                <li><Link to="/plans">Plans &amp; Pricing</Link></li>
               </ul>
             </div>
             <div className="footer-col">
               <h4>Learn</h4>
               <ul>
                 <li><a href="#">Academy</a></li>
-                <li><a href="/blog">Blog</a></li>
+                <li><Link to="/blog">Blog</Link></li>
                 <li><a href="#">Product updates</a></li>
                 <li><a href="#">Webinars</a></li>
               </ul>
@@ -394,17 +395,17 @@ export default function HomePage() {
             <div className="footer-col">
               <h4>Company</h4>
               <ul>
-                <li><a href="/company">About us</a></li>
+                <li><Link to="/company">About us</Link></li>
                 <li><a href="#">News</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><Link to="/contact">Contact</Link></li>
                 <li><a href="#">Customer support portal</a></li>
               </ul>
             </div>
             <div className="footer-col">
               <h4>Partners</h4>
               <ul>
-                <li><a href="/partners">Overview</a></li>
-                <li><a href="/partners#solutions">Find a partner</a></li>
+                <li><Link to="/partners">Overview</Link></li>
+                <li><Link to="/partners#solutions">Find a partner</Link></li>
                 <li><a href="#">Login</a></li>
               </ul>
             </div>
