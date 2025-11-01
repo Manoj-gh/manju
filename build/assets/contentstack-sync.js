@@ -1,5 +1,5 @@
 (function(){
-  const API_HOST = 'https://cdn.contentstack.io';
+  const API_HOST = 'https://cdn.contentstack.com/v3';
   
   // Environment variables injected at build time
   
