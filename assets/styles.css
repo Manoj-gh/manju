@@ -206,9 +206,10 @@ body {
 .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
 .role-card { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.0)); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
 .role-art { height: 220px; border-radius: var(--radius-sm); margin-bottom: 14px; border: 1px solid var(--border); background-size: cover; background-position: center; position: relative; overflow: hidden; }
-.role-1 { background-image: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80&auto=format&fit=crop'); }
-.role-2 { background-image: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1518773553398-650c184e0bb3?w=1200&q=80&auto=format&fit=crop'); }
-.role-3 { background-image: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80&auto=format&fit=crop'); }
+/* Placeholder CSS background images removed - will be replaced by Contentstack dynamic images */
+.role-1 { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)); }
+.role-2 { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)); }
+.role-3 { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)); }
 .role-card h3 { margin: 6px 0 8px; font-size: 20px; }
 .role-card p { margin: 0 0 10px; color: var(--text-1); }
 .link { color: var(--accent-2); text-decoration: none; font-weight: 600; }
@@ -259,11 +260,12 @@ body {
 /* New sections */
 /* capabilities section removed on homepage */
 .cap-art { height: 160px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 10px; background-size: cover; background-position: center; background-repeat: no-repeat; }
-.cap-headless { background-image: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1529336953121-a0ce123b4f87?w=1200&q=80&auto=format&fit=crop'); }
-.cap-data { background-image: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1551281044-8b39a0b2ebdd?w=1200&q=80&auto=format&fit=crop'); }
-.cap-personalization { background-image: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&q=80&auto=format&fit=crop'); }
-.cap-agents { background-image: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1200&q=80&auto=format&fit=crop'); }
-.cap-hosting { background-image: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1200&q=80&auto=format&fit=crop'); }
+/* Capability background images removed - will be replaced by Contentstack */
+.cap-headless { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)); }
+.cap-data { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)); }
+.cap-personalization { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)); }
+.cap-agents { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)); }
+.cap-hosting { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)); }
 
 /* Platform page */
 .feature-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
@@ -338,7 +340,8 @@ body {
 /* CTA banner */
 .cta-banner { padding: 48px 0 60px; background: radial-gradient(1000px 400px at 50% -200px, rgba(167,131,255,0.35), transparent), linear-gradient(180deg, var(--bg-1), var(--bg-0) 60%); text-align:center; }
 .cta-banner { position: relative; }
-.cta-banner::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.08; z-index:0; background:url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1600&q=60&auto=format&fit=crop') center/cover no-repeat; filter:saturate(.6) blur(2px); }
+/* CTA banner background removed - will be replaced by Contentstack */
+.cta-banner::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.08; z-index:0; background: var(--bg-1); }
 .cta-banner .container { position:relative; z-index:1; }
 .cta-banner .cta-row { display:flex; gap:12px; justify-content:center; margin-top: 12px; }
 

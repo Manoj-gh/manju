@@ -11,6 +11,10 @@
   async function fetchJSON(url){
     const sep = url.includes('?') ? '&' : '?';
     const full = `${API_HOST}/v3${url}${sep}locale=${encodeURIComponent(LOCALE)}&ts=${Date.now()}&cache_bust=${Math.random()}`;
+    console.log('🚀 [CS Debug] Fetching:', full);
+    console.log('🔑 [CS Debug] API_KEY:', API_KEY.substring(0, 8) + '...');
+    console.log('🔑 [CS Debug] DELIVERY_TOKEN:', DELIVERY_TOKEN.substring(0, 8) + '...');
+    
     const res = await fetch(full, {
       headers: { 
         'api_key': API_KEY, 
@@ -19,8 +23,16 @@
         'Pragma': 'no-cache'
       }
     });
-    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-    return await res.json();
+    
+    console.log('📡 [CS Debug] Response status:', res.status, res.statusText);
+    if (!res.ok) {
+      console.error('❌ [CS Debug] API Error:', res.status, res.statusText);
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
+    
+    const data = await res.json();
+    console.log('✅ [CS Debug] Data received:', data);
+    return data;
   }
 
   async function fetchAssetUrl(assetUid){
@@ -421,9 +433,13 @@
   }
 
   async function init(){
+    console.log('🎯 [CS Sync] Initializing...');
+    console.log('🌐 [CS Debug] API_HOST:', API_HOST);
+    console.log('🗂️ [CS Debug] ENVIRONMENT:', ENVIRONMENT);
+    
     const path = location.pathname.replace(/\\/g, '/');
     // Lightweight debug breadcrumbs
-    console.log('[CS Sync] path=', path);
+    console.log('📍 [CS Sync] Current path=', path);
     try {
       if (path.endsWith('/index.html') || path === '/' || path === '') {
         const data = await fetchJSON(`/content_types/home_page/entries?environment=${encodeURIComponent(ENVIRONMENT)}&include_count=true&include[]=assets&include[]=references`);
