@@ -23,10 +23,10 @@ console.log(`   ENVIRONMENT: ${ENVIRONMENT}`);
 const syncFilePath = path.join(projectRoot, 'public/assets/contentstack-sync.js');
 let syncContent = fs.readFileSync(syncFilePath, 'utf-8');
 
-// Use the real Contentstack API domain - NOT CDN domain
+// Use Contentstack DELIVERY API (cdn.contentstack.io) not Management API
 syncContent = syncContent.replace(
   /const API_HOST = [^;]+;/,
-  `const API_HOST = 'https://api.contentstack.io/v3';`
+  `const API_HOST = 'https://cdn.contentstack.io/v3';`
 );
 
 syncContent = syncContent.replace(

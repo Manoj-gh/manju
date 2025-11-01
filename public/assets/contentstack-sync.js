@@ -1,5 +1,5 @@
 (function(){
-  const API_HOST = 'https://api.contentstack.io/v3';
+  const API_HOST = 'https://cdn.contentstack.io/v3';
   
   // Environment variables injected at build time
   
@@ -27,6 +27,23 @@
     console.log('📡 [CS Debug] Response status:', res.status, res.statusText);
     if (!res.ok) {
       console.error('❌ [CS Debug] API Error:', res.status, res.statusText);
+      
+      // Get the actual error response body to see what's wrong
+      try {
+        const errorBody = await res.text();
+        console.error('❌ [CS Debug] Error response body:', errorBody);
+        
+        // Try to parse as JSON for better error details
+        try {
+          const errorJson = JSON.parse(errorBody);
+          console.error('❌ [CS Debug] Error JSON:', errorJson);
+        } catch(e) {
+          console.error('❌ [CS Debug] Error body (not JSON):', errorBody);
+        }
+      } catch(e) {
+        console.error('❌ [CS Debug] Could not read error body:', e);
+      }
+      
       throw new Error(`${res.status} ${res.statusText}`);
     }
     
