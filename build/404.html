@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <script>
-        // Redirect to the main app and let React Router handle routing
-        var segmentCount = 0;
-        var l = window.location;
-        l.replace(
-            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-            l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + 
-            '/#' + l.pathname.slice(1) + (l.search || '')
-        );
-    </script>
-</head>
-<body>
-    <p>Redirecting to React app...</p>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo%20(2).png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Contentstack</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script type="module" crossorigin src="/assets/index-Clpiy0xi.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
