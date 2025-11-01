@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Platform Redirect</title>
+    <title>React Platform Page</title>
+    <base href="/" />
     <script>
-        console.log('🔧 [Platform] Redirecting from:', window.location.href);
-        console.log('🔧 [Platform] Target:', window.location.origin + '/#/platform');
-        window.location.replace(window.location.origin + '/#/platform');
+        console.log('🚀 [PLATFORM REDIRECT] From:', window.location.href);
+        console.log('🚀 [PLATFORM REDIRECT] To:', window.location.origin + '/#/platform');
+        
+        // Immediate redirect to React app
+        window.location.replace('/#/platform');
     </script>
 </head>
-<body style="background:#0a0a0f;color:#fff;padding:20px;">
-    <h1>🔄 Redirecting to Platform...</h1>
-    <p>If not redirected: <a href="/#/platform">Click here</a></p>
+<body style="background:#0a0a0f;color:#fff;font-family:sans-serif;padding:20px;text-align:center;">
+    <h1>🔄 Loading React Platform Page...</h1>
+    <p>Redirecting to React app...</p>
+    <p>If not redirected: <strong><a href="/#/platform" style="color:#7c3aed;text-decoration:none;">Click here</a></strong></p>
 </body>
 </html>
