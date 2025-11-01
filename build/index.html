@@ -1,18 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/logo%20(2).png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
+    <title>Contentstack React App</title>
+    <link rel="icon" href="/assets/logo%20(2).png" />
+    <link rel="stylesheet" href="/assets/styles.css" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <title>Contentstack</title>
-    <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+    <div id="root">
+        <div style="background:#0a0a0f;color:#fff;padding:40px;text-align:center;min-height:100vh;">
+            <h1>🚀 Loading React App...</h1>
+            <p>If this message persists, please check your JavaScript console.</p>
+        </div>
+    </div>
+    
     <script type="module" crossorigin src="/assets/index-4GXzbXOM.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    
+    <script>
+        console.log('🚀 [REACT INDEX] React app index.html loaded');
+        console.log('🚀 [REACT INDEX] Current URL:', window.location.href);
+        console.log('🚀 [REACT INDEX] Pathname:', window.location.pathname);
+        console.log('🚀 [REACT INDEX] Hash:', window.location.hash);
+        
+        // Force hash routing if not already there
+        if (!window.location.hash && window.location.pathname === '/') {
+            console.log('🚀 [REACT INDEX] Adding hash for root');
+            window.location.hash = '#/';
+        }
+    </script>
+</body>
 </html>
