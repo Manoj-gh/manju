@@ -10,7 +10,7 @@
 
   async function fetchJSON(url){
     const sep = url.includes('?') ? '&' : '?';
-    const full = `${API_HOST}/v3${url}${sep}locale=${encodeURIComponent(LOCALE)}&ts=${Date.now()}&cache_bust=${Math.random()}`;
+    const full = `${API_HOST}${url}${sep}locale=${encodeURIComponent(LOCALE)}&ts=${Date.now()}&cache_bust=${Math.random()}`;
     console.log('🚀 [CS Debug] Fetching:', full);
     console.log('🔑 [CS Debug] API_KEY:', API_KEY.substring(0, 8) + '...');
     console.log('🔑 [CS Debug] DELIVERY_TOKEN:', DELIVERY_TOKEN.substring(0, 8) + '...');
