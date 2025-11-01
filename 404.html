@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Ultimate SPA redirect solution for ANY static hosting
+        const path = window.location.pathname;
+        
+        // Map of routes to their HTML files
+        const routes = {
+            '/platform': '/platform.html',
+            '/partners': '/partners.html', 
+            '/company': '/company.html',
+            '/blog': '/blog.html',
+            '/plans': '/plans.html',
+            '/contact': '/contact.html',
+            '/docs': '/docs.html',
+            '/careers': '/careers.html',
+            '/marketplace': '/marketplace.html',
+            '/academy': '/academy.html',
+            '/events': '/events.html',
+            '/updates': '/updates.html',
+            '/start': '/start.html'
+        };
+        
+        // If we have a route mapping, redirect to the HTML file
+        if (routes[path]) {
+            console.log('🔄 Redirecting', path, 'to', routes[path]);
+            window.location.replace(routes[path]);
+        } else {
+            // Otherwise go to home
+            console.log('🔄 Redirecting to home from', path);
+            window.location.replace('/');
+        }
+    </script>
+</head>
+<body>
+    <div style="text-align: center; padding: 50px; font-family: Inter, sans-serif;">
+        <h2>Redirecting...</h2>
+        <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
+    </div>
+</body>
+</html>
