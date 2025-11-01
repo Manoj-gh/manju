@@ -8,6 +8,9 @@
         // Ultimate SPA redirect solution for ANY static hosting
         const path = window.location.pathname;
         
+        // INSTANT redirect - no delay
+        console.log('🔄 404.html triggered for path:', path);
+        
         // Map of routes to their HTML files
         const routes = {
             '/platform': '/platform.html',
@@ -25,14 +28,13 @@
             '/start': '/start.html'
         };
         
-        // If we have a route mapping, redirect to the HTML file
+        // IMMEDIATE redirect
         if (routes[path]) {
-            console.log('🔄 Redirecting', path, 'to', routes[path]);
+            console.log('🔄 IMMEDIATE redirect', path, 'to', routes[path]);
             window.location.replace(routes[path]);
         } else {
-            // Otherwise go to home
-            console.log('🔄 Redirecting to home from', path);
-            window.location.replace('/');
+            console.log('🔄 IMMEDIATE redirect to home from', path);
+            window.location.replace('/index.html');
         }
     </script>
 </head>

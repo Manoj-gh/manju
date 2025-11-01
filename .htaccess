@@ -1,0 +1,21 @@
+RewriteEngine On
+
+# Handle specific routes
+RewriteRule ^platform$ platform.html [L]
+RewriteRule ^partners$ partners.html [L]
+RewriteRule ^company$ company.html [L]
+RewriteRule ^blog$ blog.html [L]
+RewriteRule ^plans$ plans.html [L]
+RewriteRule ^contact$ contact.html [L]
+RewriteRule ^docs$ docs.html [L]
+RewriteRule ^careers$ careers.html [L]
+RewriteRule ^marketplace$ marketplace.html [L]
+RewriteRule ^academy$ academy.html [L]
+RewriteRule ^events$ events.html [L]
+RewriteRule ^updates$ updates.html [L]
+RewriteRule ^start$ start.html [L]
+
+# Fallback to index.html for everything else
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.html [L]
