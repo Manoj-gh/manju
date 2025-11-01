@@ -45,13 +45,12 @@ if (fs.existsSync(distDir)) {
 
   fs.writeFileSync(path.join(buildDir, '_redirects'), redirectsContent);
   
-  // Copy index.html as 404.html for fallback routing
-  const indexContent = fs.readFileSync(path.join(buildDir, 'index.html'), 'utf-8');
-  fs.writeFileSync(path.join(buildDir, '404.html'), indexContent);
-
   // 6. Add cache-busting meta tags to index.html
   const indexPath = path.join(buildDir, 'index.html');
   let indexContent = fs.readFileSync(indexPath, 'utf-8');
+  
+  // Copy index.html as 404.html for fallback routing
+  fs.writeFileSync(path.join(buildDir, '404.html'), indexContent);
   
   if (!indexContent.includes('Cache-Control')) {
     indexContent = indexContent.replace(

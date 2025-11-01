@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route, useLocation, Link } from 'react-router-dom'
+import { Routes, Route, useLocation, Link, HashRouter } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import PlatformPage from './pages/PlatformPage'
 import PlansPage from './pages/PlansPage'
@@ -9,7 +9,7 @@ import DocsPage from './pages/DocsPage'
 import BlogPage from './pages/BlogPage'
 import ContactPage from './pages/ContactPage'
 
-function App() {
+function AppRoutes() {
   const location = useLocation()
 
   useEffect(() => {
