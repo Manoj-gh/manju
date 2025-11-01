@@ -14,6 +14,10 @@ function AppRoutes() {
   const location = useLocation()
 
   useEffect(() => {
+    // Debug current route
+    console.log('🧭 [App] Current location:', location.pathname, location.hash);
+    console.log('🧭 [App] Full URL:', window.location.href);
+    
     // Initialize counters and animations (from original script.js)
     const script = document.createElement('script')
     script.src = '/assets/script.js'
