@@ -49,8 +49,11 @@ export function useContentstack(contentType) {
         console.log(`🏠 [React CS Debug] Loading ${contentType}...`)
         const response = await fetchJSON(`/content_types/${contentType}/entries?environment=${encodeURIComponent(ENVIRONMENT)}&include_count=true&include[]=assets&include[]=references`)
         
-        const entry = (response.entries && response.entries[0]) || null
-        console.log(`🏠 [React CS Debug] ${contentType} entry:`, entry)
+        // For partners, return all entries; for others, return first entry
+        const isMultiEntry = contentType === 'partner' || contentType === 'blog_post' || contentType === 'event'
+        const entry = isMultiEntry ? null : ((response.entries && response.entries[0]) || null)
+        
+        console.log(`🏠 [React CS Debug] ${contentType} ${isMultiEntry ? 'entries' : 'entry'}:`, isMultiEntry ? response.entries : entry)
         
         if (entry && response.includes) {
           const assets = (response.includes.Asset || response.includes.assets || []).reduce((m, a) => {
@@ -77,7 +80,11 @@ export function useContentstack(contentType) {
           }
         }
         
-        setData({ entry, getBlock: (uid) => getBlock(entry, uid) })
+        setData({ 
+          entry, 
+          data: response, // Include full response for multi-entry content types
+          getBlock: (uid) => getBlock(entry, uid) 
+        })
         setLoading(false)
       } catch (err) {
         console.error('❌ [React CS Debug] Error:', err)
