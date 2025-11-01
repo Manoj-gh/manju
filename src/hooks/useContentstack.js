@@ -8,7 +8,10 @@ const LOCALE = 'en-us'
 
 async function fetchJSON(url) {
   const sep = url.includes('?') ? '&' : '?'
-  const full = `${API_HOST}${url}${sep}locale=${encodeURIComponent(LOCALE)}&ts=${Date.now()}&cache_bust=${Math.random()}`
+  // Add more aggressive cache busting for Contentstack testing
+  const timestamp = Date.now()
+  const cacheBust = Math.random().toString(36).substring(7)
+  const full = `${API_HOST}${url}${sep}locale=${encodeURIComponent(LOCALE)}&ts=${timestamp}&cache_bust=${cacheBust}&v=${timestamp}`
   
   console.log('🚀 [React CS Debug] Fetching:', full)
   

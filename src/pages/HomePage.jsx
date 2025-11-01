@@ -405,7 +405,7 @@ export default function HomePage() {
               <h4>Partners</h4>
               <ul>
                 <li><Link to="/partners">Overview</Link></li>
-                <li><Link to="/partners#solutions">Find a partner</Link></li>
+                <li><Link to="/partners" state={{ tab: 'solutions' }}>Find a partner</Link></li>
                 <li><a href="#">Login</a></li>
               </ul>
             </div>

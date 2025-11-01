@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Fix for hash router refresh issues
+        (function() {
+            var path = window.location.pathname;
+            var hash = window.location.hash;
+            
+            console.log('🔧 [Refresh Fix] Current path:', path, 'hash:', hash);
+            
+            // If we're not at root and don't have a hash, redirect with hash
+            if (path !== '/' && !hash.startsWith('#/')) {
+                var newUrl = '/#' + path + (window.location.search || '');
+                console.log('🔧 [Refresh Fix] Redirecting to:', newUrl);
+                window.location.replace(newUrl);
+            }
+            
+            // If we have a hash but no leading slash, fix it
+            if (hash && !hash.startsWith('#/')) {
+                var fixedHash = '#/' + hash.substring(1);
+                console.log('🔧 [Refresh Fix] Fixing hash to:', fixedHash);
+                window.location.replace(fixedHash);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirecting to the correct React route...</p>
+    <p>If you're not redirected automatically, <a href="/#/">click here</a></p>
+</body>
+</html>

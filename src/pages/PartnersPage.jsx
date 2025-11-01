@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useContentstack } from '../hooks/useContentstack'
 
 export default function PartnersPage() {
   const { data, loading, error } = useContentstack('partner')
-  const [activeTab, setActiveTab] = useState('solutions')
+  const location = useLocation()
+  const [activeTab, setActiveTab] = useState(location.state?.tab || 'solutions')
   const [searchTerm, setSearchTerm] = useState('')
   
   useEffect(() => {
