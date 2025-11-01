@@ -1,70 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <base href="/" />
-    <title>Contentstack React App</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contentstack – Adaptive Experience Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="/assets/logo%20(2).png" />
     <link rel="stylesheet" href="/assets/styles.css" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-</head>
-<body>
-    <div id="root">
-        <div style="background:#0a0a0f;color:#fff;padding:40px;text-align:center;min-height:100vh;">
-            <h1>🚀 Loading React App...</h1>
-            <p>If this message persists, please check your JavaScript console.</p>
-        </div>
+  </head>
+  <body>
+    <!-- Announcement bar -->
+    <div class="announce">
+      <div class="container">
+        <span>See what’s new at our Fall Product Update — Live November 6</span>
+        <span aria-hidden="true" class="arrow">→</span>
+      </div>
     </div>
+
+    <!-- Header / Nav -->
+    <header class="site-header">
+      <div class="container nav">
+        <a class="logo" href="/"><img src="/assets/logo%20(2).png" alt="Contentstack" class="logo-img" /> Contentstack</a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="/platform.html">Platform</a></li>
+            <li class="has-dropdown">
+              <button class="dropdown-trigger" aria-expanded="false">Resources</button>
+              <div class="dropdown" role="menu">
+                <a href="/blog.html">Blog</a>
+                <a href="/academy.html">Academy</a>
+                <a href="/docs.html">Documentation</a>
+                <a href="/marketplace.html">Marketplace</a>
+                <a href="/updates.html">Product updates</a>
+                <a href="/events.html">Events</a>
+              </div>
+            </li>
+            <li><a href="/plans.html">Plans</a></li>
+            <li><a href="/partners.html">Partners</a></li>
+            <li><a href="/company.html">Company</a></li>
+          </ul>
+          <div class="nav-cta">
+            <a class="btn ghost" href="/contact.html">Talk to Us</a>
+            <a class="btn solid" href="/start.html">Start Free</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1>
+          The adaptive experience platform for real‑time personalization at speed
+          and scale
+        </h1>
+        <div class="hero-cta">
+          <a class="btn solid xl" href="/start.html">Try for free</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Edge logo strip placeholder -->
+    <section class="logos">
+      <div class="container">
+        <div class="logo-row" aria-label="Customer brands">
+          <div class="logo-pill">Topgolf Callaway</div>
+          <div class="logo-pill">Steve Madden</div>
+          <div class="logo-pill">MongoDB</div>
+          <div class="logo-pill">Alaska Airlines</div>
+          <div class="logo-pill">bol.</div>
+          <div class="logo-pill">Callaway</div>
+          <div class="logo-pill">Burberry</div>
+          <div class="logo-pill">Land O'Lakes</div>
+          <div class="logo-pill">Simmons &amp; Simmons</div>
+          <div class="logo-pill">KLM</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roles / Cards -->
+    <section class="roles" id="platform">
+      <div class="container">
+        <h2>Built for everyone in your organization</h2>
+        <div class="card-grid reveal">
+          <article class="role-card">
+            <div class="role-art role-1" aria-hidden="true"></div>
+            <h3></h3>
+            <p></p>
+            <a class="link" href="#"></a>
+          </article>
+          <article class="role-card">
+            <div class="role-art role-2" aria-hidden="true"></div>
+            <h3></h3>
+            <p></p>
+            <a class="link" href="#"></a>
+          </article>
+          <article class="role-card">
+            <div class="role-art role-3" aria-hidden="true"></div>
+            <h3></h3>
+            <p></p>
+            <a class="link" href="#"></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     
-    <script>
-        console.log('🚀 [REACT INDEX] React app index.html loaded');
-        console.log('🚀 [REACT INDEX] Current URL:', window.location.href);
-        console.log('🚀 [REACT INDEX] Pathname:', window.location.pathname);
-        console.log('🚀 [REACT INDEX] Hash:', window.location.hash);
+
+    <!-- Customer Success -->
+    <section class="success">
+      <div class="container">
+        <p class="eyebrow">Customer success</p>
+        <h2>Measurable success that makes a difference</h2>
+        <div class="success-grid reveal">
+          <article class="success-card">
+            <div class="metric"><span class="num" data-count-to="80"></span>%<span class="label">Faster content publishing</span></div>
+            <p class="muted">See how global brands accelerate launches.</p>
+            <a class="link" href="#">Read the story</a>
+          </article>
+          <article class="success-card">
+            <div class="metric"><span class="num" data-count-to="38"></span>%<span class="label">Conversion rate</span></div>
+            <p class="muted">Personalization that impacts revenue.</p>
+            <a class="link" href="#">Read the story</a>
+          </article>
+          <article class="success-card">
+            <div class="metric"><span class="num" data-count-to="21"></span>%<span class="label">Fewer workflow steps</span></div>
+            <p class="muted">Governance without slowing teams.</p>
+            <a class="link" href="#">Read the story</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analyst Recognition -->
+    <section class="analyst">
+      <div class="container">
+        <h2>Analyst recognition</h2>
+        <div class="analyst-grid reveal">
+          <article class="analyst-card">
+            <h3></h3>
+            <p class="tag"></p>
+            <p class="muted"></p>
+          </article>
+          <article class="analyst-card">
+            <h3></h3>
+            <p class="tag"></p>
+            <p class="muted"></p>
+          </article>
+          <article class="analyst-card">
+            <h3></h3>
+            <p class="tag"></p>
+            <p class="muted"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick links / Actions -->
+    <section class="actions">
+      <div class="container">
+        <h2>Get started</h2>
+        <div class="action-grid reveal">
+          <a class="action-card" href="/plans.html">
+            <h3>Compare plans</h3>
+            <p class="muted">Find the right solution for your team.</p>
+          </a>
+          <a class="action-card" href="/docs.html">
+            <h3>Read the docs</h3>
+            <p class="muted">Build fast with guides and APIs.</p>
+          </a>
+          <a class="action-card" href="/marketplace.html">
+            <h3>Explore apps</h3>
+            <p class="muted">Integrations for search, media, commerce and more.</p>
+          </a>
+          <a class="action-card" href="/contact.html">
+            <h3>Talk to us</h3>
+            <p class="muted">Tell us about your goals. We’ll help you get there.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why legacy holds you back -->
+    <section class="why">
+      <div class="container">
+        <h2>Why legacy platforms hold you back</h2>
+        <div class="why-grid reveal">
+          <article class="why-card">
+            <h3>Slow releases</h3>
+            <p>Monolithic stacks couple content with code, making every change a release.</p>
+          </article>
+          <article class="why-card">
+            <h3>Rigid tooling</h3>
+            <p>Limited integrations and templates constrain teams and create workarounds.</p>
+          </article>
+          <article class="why-card">
+            <h3>Scaling pains</h3>
+            <p>Traffic spikes and new channels require costly re‑platforms and ops.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Ready to reimagine possible?</h2>
+        <p class="muted">Learn more about Contentstack Edge, the adaptive experience platform that powers real‑time, omnichannel personalization.</p>
+        <div class="cta-row">
+          <a class="btn solid xl" href="/contact.html">Request a demo</a>
+          <a class="btn ghost xl" href="/start.html">Start free</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="company">
+      <div class="container footer-grid">
         
-        // Test if React bundle exists before loading
-        fetch('/assets/index-4GXzbXOM.js')
-            .then(response => {
-                console.log('🚀 [REACT INDEX] JS bundle status:', response.status);
-                if (response.ok) {
-                    console.log('🚀 [REACT INDEX] Loading React bundle...');
-                    const script = document.createElement('script');
-                    script.type = 'module';
-                    script.crossOrigin = 'anonymous';
-                    script.src = '/assets/index-4GXzbXOM.js';
-                    script.onerror = () => console.error('❌ [REACT INDEX] Failed to load React bundle');
-                    script.onload = () => console.log('✅ [REACT INDEX] React bundle loaded successfully');
-                    document.head.appendChild(script);
-                } else {
-                    console.error('❌ [REACT INDEX] React bundle not found:', response.status);
-                    document.getElementById('root').innerHTML = `
-                        <div style="background:#0a0a0f;color:#fff;padding:40px;text-align:center;">
-                            <h1>❌ React Bundle Missing</h1>
-                            <p>JS Bundle returned status: ${response.status}</p>
-                            <p><a href="/debug-test.html">Run Debug Test</a></p>
-                        </div>
-                    `;
-                }
-            })
-            .catch(error => {
-                console.error('❌ [REACT INDEX] Error checking bundle:', error);
-                document.getElementById('root').innerHTML = `
-                    <div style="background:#0a0a0f;color:#fff;padding:40px;text-align:center;">
-                        <h1>❌ Network Error</h1>
-                        <p>Could not load React bundle: ${error.message}</p>
-                        <p><a href="/debug-test.html">Run Debug Test</a></p>
-                    </div>
-                `;
-            });
-        
-        // Force hash routing if not already there
-        if (!window.location.hash && window.location.pathname === '/') {
-            console.log('🚀 [REACT INDEX] Adding hash for root');
-            window.location.hash = '#/';
-        }
-    </script>
-</body>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#">Solution Center</a></li>
+            <li><a href="/marketplace.html">Marketplace</a></li>
+            <li><a href="#">Changelog</a></li>
+            <li><a href="#">Developers &amp; IT</a></li>
+            <li><a href="#">Business users</a></li>
+            <li><a href="/plans.html">Plans &amp; Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="#">Retail</a></li>
+            <li><a href="#">Travel and tourism</a></li>
+            <li><a href="#">Financial services</a></li>
+            <li><a href="#">E‑commerce</a></li>
+            <li><a href="#">Localization</a></li>
+            <li><a href="#">Personalization</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Academy</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="#">Product updates</a></li>
+            <li><a href="#">Webinars</a></li>
+            <li><a href="#">Glossary</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customers</h4>
+          <ul>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Customer Care</a></li>
+            <li><a href="#">Experience Awards</a></li>
+            <li><a href="#">Customer support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/company.html">About us</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="#">Customer support portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partners</h4>
+          <ul>
+            <li><a href="/partners.html">Overview</a></li>
+            <li><a href="/partners#solutions">Find a partner</a></li>
+            <li><a href="#">Login</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Social</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Github</a></li>
+            <li><a href="#">Youtube</a></li>
+            <li><a href="#">Discord</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footnote">
+        <p>© <span id="year"></span> Contentstack. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts moved inside body before closing tag -->
+    <script src="/assets/script.js"></script>
+    <script src="/assets/contentstack-sync.js"></script>
+  </body>
 </html>
+
+
