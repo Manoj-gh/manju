@@ -55,10 +55,12 @@ if (fs.existsSync(distDir)) {
   // Copy index.html as 404.html for fallback routing
   fs.writeFileSync(path.join(buildDir, '404.html'), indexContent);
   
-  if (!indexContent.includes('Cache-Control')) {
+  // Add base href and cache-busting meta tags
+  if (!indexContent.includes('<base href')) {
     indexContent = indexContent.replace(
       '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
       `<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />`
