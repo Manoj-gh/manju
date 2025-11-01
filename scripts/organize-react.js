@@ -40,10 +40,13 @@ if (fs.existsSync(distDir)) {
     });
   }
   
-  // 5. Create SPA routing files for static hosting (Contentstack Launch)
-  const redirectsContent = `/*    /index.html   200`;
-
-  fs.writeFileSync(path.join(buildDir, '_redirects'), redirectsContent);
+  // 5. Create redirect HTML files for each route (works on ANY static hosting)
+  const routes = ['academy', 'blog', 'partners', 'platform', 'company', 'docs', 'contact', 'plans', 'marketplace', 'careers', 'events', 'updates', 'start'];
+  
+  routes.forEach(route => {
+    const redirectHtml = `<!DOCTYPE html><html><head><title>Redirecting...</title><script>window.location.replace('/#/${route}');</script></head><body>Redirecting to /#/${route}...</body></html>`;
+    fs.writeFileSync(path.join(buildDir, `${route}.html`), redirectHtml);
+  });
   
   // 6. Add cache-busting meta tags to index.html
   const indexPath = path.join(buildDir, 'index.html');

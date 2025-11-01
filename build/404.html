@@ -1,35 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to React App...</title>
-    <script>
-        // Advanced redirect handling for HashRouter
-        (function() {
-            var currentPath = window.location.pathname;
-            var search = window.location.search;
-            var hash = window.location.hash;
-            
-            console.log('🚨 [404 Redirect] Path:', currentPath, 'Search:', search, 'Hash:', hash);
-            
-            // If we're at root, just go to hash root
-            if (currentPath === '/') {
-                window.location.replace('/#/');
-                return;
-            }
-            
-            // Convert path to hash route
-            var hashRoute = '/#' + currentPath;
-            if (search) hashRoute += search;
-            
-            console.log('🚨 [404 Redirect] Redirecting to:', hashRoute);
-            window.location.replace(hashRoute);
-        })();
-    </script>
-</head>
-<body style="background: #0a0a0f; color: #fff; font-family: Inter, sans-serif; padding: 40px; text-align: center;">
-    <h1>🔄 Redirecting to React App...</h1>
-    <p>If you're not redirected automatically, <a href="/#/" style="color: #7c3aed;">click here to go home</a></p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo%20(2).png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contentstack</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script type="module" crossorigin src="/assets/index-CjyqXLIK.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
