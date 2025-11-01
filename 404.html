@@ -1,14 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/logo%20(2).png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contentstack</title>
-    <link rel="stylesheet" href="/assets/styles.css" />
-    <script type="module" crossorigin src="/assets/index-4GXzbXOM.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to React App...</title>
+    <script>
+        // For Contentstack Launch - redirect ANY 404 to React SPA
+        console.log('🔄 [404] Redirecting to React SPA:', window.location.pathname);
+        
+        // Go to React SPA root with hash of current path
+        const currentPath = window.location.pathname;
+        const hashPath = currentPath === '/' ? '' : currentPath;
+        
+        // Immediate redirect to React SPA with hash routing
+        window.location.replace('/#' + hashPath);
+    </script>
+</head>
+<body>
+    <div style="text-align: center; padding: 50px; font-family: Inter, sans-serif;">
+        <h2>Loading your page...</h2>
+        <p>Redirecting to React app...</p>
+    </div>
+</body>
 </html>
