@@ -42,4 +42,12 @@ function AppRoutes() {
   )
 }
 
+function App() {
+  return (
+    <HashRouter>
+      <AppRoutes />
+    </HashRouter>
+  )
+}
+
 export default App
