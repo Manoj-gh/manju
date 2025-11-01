@@ -51,12 +51,18 @@
   }
 
   function applyHome(entry){
+    console.log('🎯 [CS Debug] applyHome called with entry:', entry);
     try {
       // Announcement
       const ann = getBlock(entry, 'announcement_bar');
+      console.log('📢 [CS Debug] announcement block:', ann);
       if (ann && ann.enabled) {
         const bar = document.querySelector('.announce .container span');
-        if (bar && ann.text) bar.textContent = ann.text;
+        console.log('📢 [CS Debug] announcement element:', bar);
+        if (bar && ann.text) {
+          bar.textContent = ann.text;
+          console.log('✅ [CS Debug] Applied announcement text:', ann.text);
+        }
       }
       // Hero
       const hero = getBlock(entry, 'hero');
@@ -71,26 +77,49 @@
       }
       // Roles (3)
       const roles = getBlock(entry, 'roles');
+      console.log('👥 [CS Debug] applyHome - roles block:', roles);
       if (roles && Array.isArray(roles.cards)) {
-        document.querySelectorAll('section.roles .card-grid .role-card').forEach((card, i) => {
-          const item = roles.cards[i]; if (!item) return;
+        const roleCards = document.querySelectorAll('section.roles .card-grid .role-card');
+        console.log('👥 [CS Debug] Found role card elements:', roleCards.length);
+        roleCards.forEach((card, i) => {
+          const item = roles.cards[i]; 
+          console.log(`👤 [CS Debug] Processing role card ${i}:`, item);
+          if (!item) return;
+          
           const h3 = card.querySelector('h3');
           const p = card.querySelector('p');
           const a = card.querySelector('a.link');
           const art = card.querySelector('.role-art');
-          if (h3 && item.title) h3.textContent = item.title;
-          if (p && item.description) p.textContent = item.description;
+          
+          if (h3 && item.title) {
+            h3.textContent = item.title;
+            console.log(`✅ [CS Debug] Applied title "${item.title}" to card ${i}`);
+          }
+          if (p && item.description) {
+            p.textContent = item.description;
+            console.log(`✅ [CS Debug] Applied description to card ${i}`);
+          }
           if (a && item.link) {
             if (item.link.label) a.textContent = item.link.label;
             if (item.link.href) a.setAttribute('href', item.link.href);
+            console.log(`✅ [CS Debug] Applied link to card ${i}:`, item.link);
           }
+          
+          console.log(`🖼️ [CS Debug] Card ${i} art element:`, art);
+          console.log(`🖼️ [CS Debug] Card ${i} item.image:`, item.image);
+          
           if (art && item.image && (item.image.url || item.image.file?.url)) {
             const url = item.image.url || item.image.file.url;
             art.style.backgroundImage = `url(${url})`;
             art.style.backgroundSize = 'cover';
             art.style.backgroundPosition = 'center';
+            console.log(`✅ [CS Debug] Applied background image to card ${i}:`, url);
+          } else {
+            console.log(`❌ [CS Debug] NO IMAGE for card ${i} - art:${!!art}, image:`, item.image);
           }
         });
+      } else {
+        console.log('❌ [CS Debug] No roles block or cards array');
       }
       // Success cards (3)
       const success = getBlock(entry, 'success_cards');
@@ -442,17 +471,40 @@
     console.log('📍 [CS Sync] Current path=', path);
     try {
       if (path.endsWith('/index.html') || path === '/' || path === '') {
+        console.log('🏠 [CS Debug] Loading HOME PAGE...');
         const data = await fetchJSON(`/content_types/home_page/entries?environment=${encodeURIComponent(ENVIRONMENT)}&include_count=true&include[]=assets&include[]=references`);
         const entry = (data.entries && data.entries[0]) || null;
-        console.log('[CS Sync] home_page count=', data.count || (data.entries||[]).length);
+        console.log('🏠 [CS Debug] home_page entry:', entry);
+        console.log('🏠 [CS Debug] home_page count=', data.count || (data.entries||[]).length);
+        console.log('🖼️ [CS Debug] includes data:', data.includes);
+        
         if (entry && data.includes) {
           const assets = (data.includes.Asset || data.includes.assets || []).reduce((m,a)=>{ if(a.uid){ m[a.uid] = a.url || a.file?.url; } return m; }, {});
+          console.log('🖼️ [CS Debug] processed assets:', assets);
+          
           const rolesBlk = getBlock(entry, 'roles');
+          console.log('👥 [CS Debug] roles block:', rolesBlk);
           if (rolesBlk && Array.isArray(rolesBlk.cards)) {
-            rolesBlk.cards.forEach(c => { const uid = c.image?.uid || c.image; if (uid && assets[uid]) c.image = { uid, url: assets[uid] }; });
+            rolesBlk.cards.forEach((c, i) => { 
+              console.log(`👤 [CS Debug] role card ${i}:`, c);
+              const uid = c.image?.uid || c.image; 
+              if (uid && assets[uid]) {
+                c.image = { uid, url: assets[uid] };
+                console.log(`✅ [CS Debug] Applied image ${uid} to role ${i}`);
+              } else {
+                console.log(`❌ [CS Debug] NO IMAGE for role ${i}, uid=${uid}, available assets:`, Object.keys(assets));
+              }
+            });
           }
+        } else {
+          console.log('❌ [CS Debug] No entry or includes data');
         }
-        if (entry) applyHome(entry);
+        if (entry) {
+          console.log('🎯 [CS Debug] Applying home data...');
+          applyHome(entry);
+        } else {
+          console.error('❌ [CS Debug] NO HOME PAGE ENTRY FOUND!');
+        }
       } else if (path.endsWith('/platform.html') || path.endsWith('/platform') || path.endsWith('/platform/')) {
         const data = await fetchJSON(`/content_types/platform_page/entries?environment=${encodeURIComponent(ENVIRONMENT)}&include_count=true&include[]=assets`);
         const entry = (data.entries && data.entries[0]) || null;
