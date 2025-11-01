@@ -6,9 +6,13 @@
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
+    "react:dev": "vite",
+    "react:build": "vite build",
     "organize": "node scripts/organize-project.js",
     "inject-env": "node scripts/inject-env.js",
-    "build": "npm run inject-env && npm run organize && node scripts/build-static.js",
+    "build": "npm run react:build && npm run organize-react",
+    "build:static": "npm run inject-env && npm run organize && node scripts/build-static.js",
+    "organize-react": "node scripts/organize-react.js",
     "import:all": "node scripts/import-all.js",
     "import:from-local": "node scripts/import-from-local.js",
     "publish:all": "node scripts/publish-all.js",
@@ -23,7 +27,14 @@
     "helmet": "^7.1.0",
     "morgan": "^1.10.0",
     "@contentstack/management": "^1.6.0",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.8"
   }
 }
 
