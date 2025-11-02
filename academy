@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contentstack Blog</title>
+    <title>Academy – Contentstack</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,15 +18,33 @@
       </div>
     </header>
 
-    <section class="hero" style="padding:56px 0 30px">
+    <section class="hero" style="padding:56px 0 24px">
       <div class="container">
-        <h1>Insights, strategy and product updates</h1>
+        <h1>Academy</h1>
+        <p class="muted">Learn best practices with hands‑on courses, tutorials and certifications.</p>
       </div>
     </section>
 
-    <main class="container" style="padding: 28px 0 60px">
+    <main class="container" style="padding:28px 0 60px">
       <div class="card-grid">
-        <!-- Content will be dynamically loaded from Contentstack -->
+        <article class="role-card">
+          <img class="thumb" alt="Headless basics" src="" />
+          <h3>Headless CMS foundations</h3>
+          <p>Understand content modeling, environments and delivery APIs.</p>
+          <a class="link" href="#">Start course</a>
+        </article>
+        <article class="role-card">
+          <img class="thumb" alt="Personalization course" src="" />
+          <h3>Omnichannel personalization</h3>
+          <p>Build audiences, experiments and orchestrate journeys.</p>
+          <a class="link" href="#">Start course</a>
+        </article>
+        <article class="role-card">
+          <img class="thumb" alt="Developers" src="" />
+          <h3>Developers fast track</h3>
+          <p>SDKs, webhooks and edge functions with practical labs.</p>
+          <a class="link" href="#">Start course</a>
+        </article>
       </div>
     </main>
 
