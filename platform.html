@@ -117,8 +117,18 @@
     </footer>
     <script src="/assets/script.js"></script>
     <script src="/assets/contentstack-sync.js"></script>
-      <script src="/assets/clean-urls.js"></script>
+    <script src="/assets/clean-urls.js"></script>
+    <script>
+      // Handle direct URL access for static hosting
+      if (window.location.pathname === '/platform' && !window.location.search && !window.location.hash) {
+        console.log('🔄 Direct /platform access detected, ensuring page loads correctly');
+        // Page is already loaded, just ensure URL is clean
+        if (window.location.pathname.endsWith('.html')) {
+          window.history.replaceState(null, '', '/platform');
+        }
+      }
+    </script>
   </body>
-  </html>
+</html>
 
 

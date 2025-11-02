@@ -318,6 +318,15 @@
     <script src="/assets/script.js"></script>
     <script src="/assets/contentstack-sync.js?v=2"></script>
       <script src="/assets/clean-urls.js"></script>
+    <script>
+      // Handle direct URL access for static hosting
+      if (window.location.pathname === '/company' && !window.location.search && !window.location.hash) {
+        console.log('🔄 Direct /company access detected, ensuring page loads correctly');
+        if (window.location.pathname.endsWith('.html')) {
+          window.history.replaceState(null, '', '/company');
+        }
+      }
+    </script>
   </body>
   </html>
 

@@ -124,8 +124,17 @@
     </script>
     <script src="/assets/script.js"></script>
     <script src="/assets/contentstack-sync.js"></script>
-      <script src="/assets/clean-urls.js"></script>
+    <script src="/assets/clean-urls.js"></script>
+    <script>
+      // Handle direct URL access for static hosting
+      if (window.location.pathname === '/partners' && !window.location.search && !window.location.hash) {
+        console.log('🔄 Direct /partners access detected, ensuring page loads correctly');
+        if (window.location.pathname.endsWith('.html')) {
+          window.history.replaceState(null, '', '/partners');
+        }
+      }
+    </script>
   </body>
-  </html>
+</html>
 
 

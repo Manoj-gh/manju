@@ -1,0 +1,29 @@
+RewriteEngine On
+
+# Remove .html extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Redirect .html to clean URLs
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
+# Specific page mappings for static hosting
+RewriteRule ^platform/?$ platform.html [NC,L]
+RewriteRule ^partners/?$ partners.html [NC,L]
+RewriteRule ^company/?$ company.html [NC,L]
+RewriteRule ^blog/?$ blog.html [NC,L]
+RewriteRule ^plans/?$ plans.html [NC,L]
+RewriteRule ^contact/?$ contact.html [NC,L]
+RewriteRule ^docs/?$ docs.html [NC,L]
+RewriteRule ^careers/?$ careers.html [NC,L]
+RewriteRule ^marketplace/?$ marketplace.html [NC,L]
+RewriteRule ^academy/?$ academy.html [NC,L]
+RewriteRule ^events/?$ events.html [NC,L]
+RewriteRule ^updates/?$ updates.html [NC,L]
+
+# Fallback to index for everything else
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.html [L]
