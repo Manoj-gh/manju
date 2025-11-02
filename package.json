@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo 'Static site - no build needed, files ready for deployment'"
   },
   "dependencies": {
     "compression": "^1.7.4",
