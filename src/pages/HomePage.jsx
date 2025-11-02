@@ -25,24 +25,32 @@ export default function HomePage() {
   const entry = data?.entry
   const getBlock = data?.getBlock
 
-  // Get content blocks
-  const announcement = getBlock?.('announcement_bar')
-  const hero = getBlock?.('hero')
-  const roles = getBlock?.('roles')
-  const success = getBlock?.('success_cards')
-  const metrics = getBlock?.('metrics')
-  const analyst = getBlock?.('analyst_recognition')
-  const why = getBlock?.('why')
-  const quickLinks = getBlock?.('quick_links')
-  const bottomCta = getBlock?.('bottom_cta')
+  // DEBUG: Log the actual entry structure to understand your data
+  console.log('🏠 [HomePage Debug] Raw entry:', entry)
+  console.log('🏠 [HomePage Debug] Entry keys:', entry ? Object.keys(entry) : 'No entry')
+  
+  // Get content blocks (try both block-based and direct field access)
+  const announcement = getBlock?.('announcement_bar') || entry?.announcement_bar
+  const hero = getBlock?.('hero') || entry?.hero || entry
+  const roles = getBlock?.('roles') || entry?.roles
+  const success = getBlock?.('success_cards') || entry?.success_cards
+  const metrics = getBlock?.('metrics') || entry?.metrics
+  const analyst = getBlock?.('analyst_recognition') || entry?.analyst_recognition
+  const why = getBlock?.('why') || entry?.why
+  const quickLinks = getBlock?.('quick_links') || entry?.quick_links
+  const bottomCta = getBlock?.('bottom_cta') || entry?.bottom_cta
+
+  // DEBUG: Log what we found
+  console.log('🏠 [HomePage Debug] hero block:', hero)
+  console.log('🏠 [HomePage Debug] announcement block:', announcement)
 
   return (
     <>
       {/* Announcement Bar */}
-      {announcement?.enabled && (
+      {(announcement?.enabled !== false) && (
         <div className="announce">
           <div className="container">
-            <span>{announcement.text || "See what's new at our Fall Product Update — Live November 6"}</span>
+            <span>{announcement?.text || announcement?.message || announcement?.content || entry?.announcement || "See what's new at our Fall Product Update — Live November 6"}</span>
             <span aria-hidden="true" className="arrow">→</span>
           </div>
         </div>
@@ -83,10 +91,10 @@ export default function HomePage() {
       {/* Hero */}
       <section className="hero">
         <div className="container hero-inner">
-          <h1>{hero?.headline || "The adaptive experience platform for real‑time personalization at speed and scale"}</h1>
+          <h1>{hero?.headline || hero?.title || entry?.title || entry?.headline || "The adaptive experience platform for real‑time personalization at speed and scale"}</h1>
           <div className="hero-cta">
-            <Link className="btn solid xl" to={hero?.primary_cta?.href || "/start"}>
-              {hero?.primary_cta?.label || "Try for free"}
+            <Link className="btn solid xl" to={hero?.primary_cta?.href || hero?.cta_href || "/start"}>
+              {hero?.primary_cta?.label || hero?.cta_text || hero?.cta_label || "Try for free"}
             </Link>
           </div>
         </div>
