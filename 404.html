@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found</title>
     <script>
-        // For Contentstack Launch static hosting - redirect 404s to correct files
-        console.log('🔄 [404] Handling 404 for path:', window.location.pathname);
-        
+        // IMMEDIATE redirect for Contentstack Launch
         const path = window.location.pathname;
+        console.log('🔄 [404] Fixing URL for Contentstack Launch:', path);
+        
         const routes = {
             '/platform': '/platform.html',
-            '/partners': '/partners.html',
+            '/partners': '/partners.html', 
             '/company': '/company.html',
             '/blog': '/blog.html',
             '/plans': '/plans.html',
@@ -25,13 +25,12 @@
             '/start': '/start.html'
         };
         
-        // Redirect to .html version if route exists
         if (routes[path]) {
-            console.log('🔄 [404] Redirecting to:', routes[path]);
-            window.location.replace(routes[path]);
+            console.log('🔄 [404] IMMEDIATE redirect to:', routes[path]);
+            window.location.href = routes[path];
         } else {
-            console.log('🔄 [404] Redirecting to home');
-            window.location.replace('/index.html');
+            console.log('🔄 [404] Going to home');
+            window.location.href = '/';
         }
     </script>
     <style>
