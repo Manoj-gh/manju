@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <script>
+        // For Contentstack Launch static hosting - redirect 404s to correct files
+        console.log('🔄 [404] Handling 404 for path:', window.location.pathname);
+        
+        const path = window.location.pathname;
+        const routes = {
+            '/platform': '/platform.html',
+            '/partners': '/partners.html',
+            '/company': '/company.html',
+            '/blog': '/blog.html',
+            '/plans': '/plans.html',
+            '/contact': '/contact.html',
+            '/docs': '/docs.html',
+            '/careers': '/careers.html',
+            '/marketplace': '/marketplace.html',
+            '/academy': '/academy.html',
+            '/events': '/events.html',
+            '/updates': '/updates.html',
+            '/start': '/start.html'
+        };
+        
+        // Redirect to .html version if route exists
+        if (routes[path]) {
+            console.log('🔄 [404] Redirecting to:', routes[path]);
+            window.location.replace(routes[path]);
+        } else {
+            console.log('🔄 [404] Redirecting to home');
+            window.location.replace('/index.html');
+        }
+    </script>
+    <style>
+        body {
+            background: #0a0a0f;
+            color: white;
+            font-family: Inter, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            max-width: 500px;
+            padding: 40px;
+        }
+        h1 { color: #7c3aed; margin-bottom: 20px; }
+        .spinner {
+            border: 3px solid #333;
+            border-top: 3px solid #7c3aed;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Redirecting...</h1>
+        <div class="spinner"></div>
+        <p>Taking you to the right page...</p>
+        <p><small>If not redirected automatically, <a href="/index.html" style="color: #7c3aed;">click here</a></small></p>
+    </div>
+</body>
+</html>

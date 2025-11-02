@@ -39,11 +39,8 @@ const staticOptions = {
 const spaDir = path.join(__dirname, 'apps', 'react', 'dist');
 const hasSPA = fs.existsSync(spaDir);
 
-// Define route helpers
-const publicDir = path.join(__dirname, 'public');
+// Define route helpers - serve from root directory
 const pickFile = (file) => {
-  const inPublic = path.join(publicDir, file);
-  if (fs.existsSync(inPublic)) return inPublic;
   return path.join(__dirname, file);
 };
 const mapRoute = (urlPath, file) => app.get(urlPath, (req, res) => {
@@ -83,8 +80,8 @@ app.get('/updates.html', (req, res) => res.redirect(301, '/updates'));
 app.get('/events.html', (req, res) => res.redirect(301, '/events'));
 app.get('/start.html', (req, res) => res.redirect(301, '/start'));
 
-// Serve assets explicitly (PRIORITY)
-app.use('/assets', express.static(path.join(publicDir, 'assets'), {
+// Serve assets explicitly from root/assets (PRIORITY)
+app.use('/assets', express.static(path.join(__dirname, 'assets'), {
   etag: true,
   lastModified: true,
   maxAge: '1y', // Cache assets for 1 year
@@ -100,8 +97,8 @@ if (hasSPA) {
   app.use(express.static(spaDir, staticOptions));
 }
 
-// Serve ./public as static directory (AFTER routes but AFTER assets)
-app.use(express.static(publicDir, staticOptions));
+// Serve root directory as static (AFTER routes but AFTER assets)
+app.use(express.static(__dirname, staticOptions));
 
 // Fallback: React SPA index if present, else public index.html
 app.use((req, res) => {
