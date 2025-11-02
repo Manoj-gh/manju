@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Refresh Issue</title>
+    <script>
+        console.log('🐛 [DEBUG] Current URL when refreshing:', window.location.href);
+        console.log('🐛 [DEBUG] Pathname:', window.location.pathname);
+        console.log('🐛 [DEBUG] Hash:', window.location.hash);
+        console.log('🐛 [DEBUG] Origin:', window.location.origin);
+        
+        // Force redirect to proper hash URL
+        if (!window.location.hash || !window.location.hash.startsWith('#/')) {
+            var newURL = window.location.origin + '/#' + window.location.pathname;
+            console.log('🐛 [DEBUG] Redirecting to:', newURL);
+            window.location.replace(newURL);
+        }
+    </script>
+</head>
+<body style="background:#0a0a0f;color:#fff;padding:20px;">
+    <h1>🐛 Debugging Refresh Issue...</h1>
+    <p>Check console for debug info</p>
+    <p><a href="/#/">Go to Home</a></p>
+</body>
+</html>

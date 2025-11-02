@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <title>Contentstack React App</title>
+    <link rel="icon" href="/assets/logo%20(2).png" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+    <div id="root">
+        <div style="background:#0a0a0f;color:#fff;padding:40px;text-align:center;min-height:100vh;">
+            <h1>🚀 Loading React App...</h1>
+            <p>If this message persists, please check your JavaScript console.</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('🚀 [REACT INDEX] React app index.html loaded');
+        console.log('🚀 [REACT INDEX] Current URL:', window.location.href);
+        console.log('🚀 [REACT INDEX] Pathname:', window.location.pathname);
+        console.log('🚀 [REACT INDEX] Hash:', window.location.hash);
+        
+        // Test if React bundle exists before loading
+        fetch('/assets/index-4GXzbXOM.js')
+            .then(response => {
+                console.log('🚀 [REACT INDEX] JS bundle status:', response.status);
+                if (response.ok) {
+                    console.log('🚀 [REACT INDEX] Loading React bundle...');
+                    const script = document.createElement('script');
+                    script.type = 'module';
+                    script.crossOrigin = 'anonymous';
+                    script.src = '/assets/index-4GXzbXOM.js';
+                    script.onerror = () => console.error('❌ [REACT INDEX] Failed to load React bundle');
+                    script.onload = () => console.log('✅ [REACT INDEX] React bundle loaded successfully');
+                    document.head.appendChild(script);
+                } else {
+                    console.error('❌ [REACT INDEX] React bundle not found:', response.status);
+                    document.getElementById('root').innerHTML = `
+                        <div style="background:#0a0a0f;color:#fff;padding:40px;text-align:center;">
+                            <h1>❌ React Bundle Missing</h1>
+                            <p>JS Bundle returned status: ${response.status}</p>
+                            <p><a href="/debug-test.html">Run Debug Test</a></p>
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('❌ [REACT INDEX] Error checking bundle:', error);
+                document.getElementById('root').innerHTML = `
+                    <div style="background:#0a0a0f;color:#fff;padding:40px;text-align:center;">
+                        <h1>❌ Network Error</h1>
+                        <p>Could not load React bundle: ${error.message}</p>
+                        <p><a href="/debug-test.html">Run Debug Test</a></p>
+                    </div>
+                `;
+            });
+        
+        // Force hash routing if not already there
+        if (!window.location.hash && window.location.pathname === '/') {
+            console.log('🚀 [REACT INDEX] Adding hash for root');
+            window.location.hash = '#/';
+        }
+    </script>
+</body>
+</html>
