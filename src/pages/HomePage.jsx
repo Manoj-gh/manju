@@ -28,6 +28,15 @@ export default function HomePage() {
   // DEBUG: Log the actual entry structure to understand your data
   console.log('🏠 [HomePage Debug] Raw entry:', entry)
   console.log('🏠 [HomePage Debug] Entry keys:', entry ? Object.keys(entry) : 'No entry')
+  console.log('🏠 [HomePage Debug] page_sections:', entry?.page_sections)
+  
+  // DEBUG: Log each page section to see the structure
+  if (entry?.page_sections) {
+    entry.page_sections.forEach((section, i) => {
+      console.log(`🏠 [HomePage Debug] page_sections[${i}]:`, section)
+      console.log(`🏠 [HomePage Debug] page_sections[${i}] keys:`, Object.keys(section))
+    })
+  }
   
   // Get content blocks (try both block-based and direct field access)
   const announcement = getBlock?.('announcement_bar') || entry?.announcement_bar
